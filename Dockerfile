@@ -8,6 +8,7 @@ RUN go build -o tftpd-go main.go
 
 FROM alpine
 COPY --from=builderimage /go/src/tftpd-go/tftpd-go /app/
+RUN apk add tftp-hpa
 WORKDIR /app
 EXPOSE 69
 CMD ["./tftpd-go"]
